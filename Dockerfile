@@ -6,11 +6,11 @@ RUN apt-get update \
     && apt-get install gnupg wget bash -y
 
 # Setup environment for convenience.
-ENV MESOS_DNS_VERSION=0.6.0
-ENV ARCH=amd64
-ENV OS=linux
-ENV MESOS_DNS_PORT=53
-ENV MESOSPHERE_PUB_KEY=111A0371BD292F47
+ARG MESOS_DNS_VERSION=0.6.0
+ARG ARCH=amd64
+ARG OS=linux
+ARG MESOS_DNS_PORT=53
+ARG MESOSPHERE_PUB_KEY=111A0371BD292F47
 
 WORKDIR /mesos-dns
 
