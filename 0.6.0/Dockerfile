@@ -17,15 +17,13 @@ RUN wget https://github.com/mesosphere/mesos-dns/releases/download/v$MESOS_DNS_V
 
 
 FROM debian:stretch-slim
-
 MAINTAINER Patrick Kleindienst
 
-ARG MESOS_DNS_PORT=53
-
-COPY --from=builder /mesos-dns-v$MESOS_DNS_VERSION-$OS-$ARCH .
-
+COPY --from=builder /mesos-dns .
 RUN chmod 700 mesos-dns
 
+ARG MESOS_DNS_PORT=53
 EXPOSE $MESOS_DNS_PORT
 
-ENTRYPOINT ./mesos-dns -config=./config.json
+ENTRYPOINT ["./mesos-dns"]
+CMD ["--help"]
